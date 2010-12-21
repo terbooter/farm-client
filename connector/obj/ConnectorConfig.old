@@ -14,21 +14,21 @@
     </define>
     <define append="true">
       <name>CONFIG::timeStamp</name>
-      <value>'20.12.2010'</value>
+      <value>'21.12.2010'</value>
     </define>
     <source-path append="true">
-      <path-element>D:\Dropbox\MyDropbox\Projects\my\farm\connector\src\main</path-element>
-      <path-element>D:\Dropbox\MyDropbox\Projects\my\farm\connector\src\test</path-element>
-      <path-element>D:\Dropbox\MyDropbox\Projects\my\farm\logger</path-element>
-      <path-element>D:\Dropbox\MyDropbox\Projects\my\farm\connector\src\interfaces</path-element>
+      <path-element>D:\Dropbox\MyDropbox\Projects\my\farm-client\connector\src\main</path-element>
+      <path-element>D:\Dropbox\MyDropbox\Projects\my\farm-client\connector\src\test</path-element>
+      <path-element>D:\Dropbox\MyDropbox\Projects\my\farm-client\logger</path-element>
+      <path-element>D:\Dropbox\MyDropbox\Projects\my\farm-client\connector\src\interfaces</path-element>
       <path-element>C:\Program Files\FlashDevelop\Library\AS3\classes</path-element>
     </source-path>
     <library-path append="true">
-      <path-element>D:\Dropbox\MyDropbox\Projects\my\farm\logger\bin\Logger.swc</path-element>
+      <path-element>D:\Dropbox\MyDropbox\Projects\my\farm-client\logger\bin\Logger.swc</path-element>
     </library-path>
   </compiler>
   <file-specs>
-    <path-element>D:\Dropbox\MyDropbox\Projects\my\farm\connector\src\test\Test.as</path-element>
+    <path-element>D:\Dropbox\MyDropbox\Projects\my\farm-client\connector\src\test\Test.as</path-element>
   </file-specs>
   <default-background-color>#FFFFFF</default-background-color>
   <default-frame-rate>30</default-frame-rate>

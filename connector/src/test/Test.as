@@ -27,12 +27,17 @@
 			
 			this.connector = new Connector(SERVER_URL);
 			this.connector.addEventListener(ConnectorEvent.RESPONSE, onServerResponse);
-			this.connector.sendRequest("test", "echo", { k1:1, k2:"TestTest", k3:"Русский текст" } );
-			this.connector.sendRequest("test", "echo", { k1:1, k2:"TestTest", k3:"English" } );
+			//this.connector.sendRequest("test", "echo", { k1:1, k2:"TestTest", k3:"Русский текст" } );
+			//this.connector.sendRequest("test", "echo", { k1:1, k2:"TestTest", k3:"English" } );
+			
+			//this.connector.sendRequest("users", "restore", { id:1 } );
+			this.connector.sendRequest("field", "restore", { id:1 } );
 		}
 		
 		private function onServerResponse(e:ConnectorEvent):void {
-			trace(e.responseXML.toString());
+			
+			Log.instance.log(e.responseID);
+			Log.instance.log(e.responseXML.toString());
 		}
 		
 	}

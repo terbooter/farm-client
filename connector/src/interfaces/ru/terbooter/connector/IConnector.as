@@ -7,9 +7,9 @@ package  ru.terbooter.connector{
 	 * @author terbooter.ru
 	 */
 	
-	[Event(name="RESPONSE", type="ru.terbooter.connector.events.ConnectorEvents")]
+	[Event(name="RESPONSE", type="ru.terbooter.connector.events.ConnectorEvent")]
 	public interface IConnector extends IEventDispatcher{
-		function sendRequest(controller:String, action:String, postParams:Object):void;
+		function sendRequest(controller:String, action:String, postParams:Object, requestID:String = null):void;
 	}
 	
 }

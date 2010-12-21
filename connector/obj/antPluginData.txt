@@ -1,1 +1,1 @@
-D:\Dropbox\MyDropbox\Projects\my\farm\connector\build.xml
+D:\Dropbox\MyDropbox\Projects\my\farm-client\connector\build.xml

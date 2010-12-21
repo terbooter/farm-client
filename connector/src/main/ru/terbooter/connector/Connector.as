@@ -25,18 +25,29 @@ package ru.terbooter.connector {
 			this.serverURL = serverURL;
 		}
 		
-		public function sendRequest(controller:String, action:String, postParams:Object):void {
+		public function sendRequest(controller:String, action:String, postParams:Object, requestID:String=null):void {
 			var url:String = this.serverURL + controller + "/" + action;
-			var loader:ConnectorLoader = new ConnectorLoader(url, postParams);
+			
+			//Если ид у запроса не задан явно, то соберем дефолтный
+			if (requestID == null) {
+				requestID = controller + "/" + action;
+				if (postParams.id) {
+					requestID += "/" + postParams.id;
+				}
+			}
+			
+			var loader:ConnectorLoader = new ConnectorLoader(url, postParams, requestID);
 			loader.addEventListener(Event.COMPLETE, onLoadComplete);
 			loader.load();
 		}
 		
 		private function onLoadComplete(e:Event):void {
-			var data:String = String(ConnectorLoader(e.target).loader.data);
+			var loader:ConnectorLoader = ConnectorLoader(e.target);
+			var data:String = String(loader.loader.data);
 			var xml:XML = new XML(data);
+			var requestID:String = loader.requestID;
 			
-			var event:ConnectorEvent = new ConnectorEvent(ConnectorEvent.RESPONSE, xml);
+			var event:ConnectorEvent = new ConnectorEvent(ConnectorEvent.RESPONSE, xml, requestID) ;
 			this.dispatchEvent(event);
 		}
 		

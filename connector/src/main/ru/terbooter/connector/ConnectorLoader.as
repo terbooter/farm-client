@@ -26,11 +26,13 @@ package ru.terbooter.connector {
 		
 		private var _loader:URLLoader;
 		private var _data:String;
+		private var _requestID:String;
 		
-		public function ConnectorLoader(url:String, postData:Object) {
+		public function ConnectorLoader(url:String, postData:Object, requestID:String) {
 			this.controller = controller;
 			this.action = action;
 			
+			this._requestID = requestID;
 			this.url = url;
 			this.postData = postData;
 		}
@@ -64,7 +66,7 @@ package ru.terbooter.connector {
 		
 		private function onComplete(e:Event):void {
 			Log.instance.log("ru.terbooter.connector.ConnectorLoader::onComplete");
-			this.dispatchEvent(e.clone());
+			this.dispatchEvent(e);
 		}
 		
 		/*public function get data():String {
@@ -75,6 +77,8 @@ package ru.terbooter.connector {
 		}*/
 		
 		public function get loader():URLLoader { return _loader; }
+		
+		public function get requestID():String { return _requestID; }
 		
 	}
 

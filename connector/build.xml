@@ -1,4 +1,4 @@
-<project name="Connector" default="test" basedir=".">
+<project name="Connector" default="main" basedir=".">
 	
 	<taskdef resource="flexTasks.tasks" classpath="${basedir}/flexTasks/lib/flexTasks.jar" />
 	
@@ -25,6 +25,8 @@
 			
 			<include-sources dir="${APP_ROOT}/src/interfaces" includes="*">
 			</include-sources>
+			
+			<external-library-path file="../${APP_ROOT}/logger/bin/Logger.swc" append="true"/>
             
         </compc>
     </target>
