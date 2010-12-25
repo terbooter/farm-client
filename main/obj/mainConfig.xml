@@ -17,25 +17,27 @@
       <value>'24.12.2010'</value>
     </define>
     <source-path append="true">
-      <path-element>D:\Dropbox\MyDropbox\Projects\my\farm-client\server_api\src\main</path-element>
-      <path-element>D:\Dropbox\MyDropbox\Projects\my\farm-client\server_api\src\test</path-element>
-      <path-element>D:\Dropbox\MyDropbox\Projects\my\farm-client\server_api\src\interfaces</path-element>
+      <path-element>D:\Dropbox\MyDropbox\Projects\my\farm-client\main\src</path-element>
+      <path-element>D:\Dropbox\MyDropbox\Projects\my\farm-client\vos</path-element>
       <path-element>D:\Dropbox\MyDropbox\Projects\my\farm-client\connector</path-element>
+      <path-element>D:\Dropbox\MyDropbox\Projects\my\farm-client\server_api</path-element>
       <path-element>D:\Dropbox\MyDropbox\Projects\my\farm-client\logger</path-element>
       <path-element>C:\Program Files\FlashDevelop\Library\AS3\classes</path-element>
     </source-path>
     <library-path append="true">
-      <path-element>D:\Dropbox\MyDropbox\Projects\my\farm-client\connector\bin\Connector.swc</path-element>
+      <path-element>D:\Dropbox\MyDropbox\Projects\my\farm-client\vos\bin\Vos.swc</path-element>
       <path-element>D:\Dropbox\MyDropbox\Projects\my\farm-client\logger\bin\Logger.swc</path-element>
+      <path-element>D:\Dropbox\MyDropbox\Projects\my\farm-client\connector\bin\Connector.swc</path-element>
+      <path-element>D:\Dropbox\MyDropbox\Projects\my\farm-client\server_api\bin\ServerApi.swc</path-element>
     </library-path>
   </compiler>
   <file-specs>
-    <path-element>D:\Dropbox\MyDropbox\Projects\my\farm-client\server_api\src\test\Test.as</path-element>
+    <path-element>D:\Dropbox\MyDropbox\Projects\my\farm-client\main\src\Preloader.as</path-element>
   </file-specs>
   <default-background-color>#FFFFFF</default-background-color>
   <default-frame-rate>30</default-frame-rate>
   <default-size>
-    <width>760</width>
-    <height>730</height>
+    <width>800</width>
+    <height>600</height>
   </default-size>
 </flex-config>

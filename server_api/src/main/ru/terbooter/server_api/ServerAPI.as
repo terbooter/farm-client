@@ -7,7 +7,7 @@ package ru.terbooter.server_api {
 	 * необходим для формализации и тестирования запросов на игровой сервер
 	 * @author terbooter.ru
 	 */
-	public class ServerAPI extends EventDispatcher{
+	public class ServerAPI extends EventDispatcher implements IServerAPI{
 		
 		private var connector:IConnector;
 		
@@ -34,13 +34,19 @@ package ru.terbooter.server_api {
 			this.connector.sendRequest("users", "restore", { id:this.uid } ,requestID);
 		}
 		
-		public function field_restore(requestID:String = null, userID:String):void {
+		public function field_restore(requestID:String = null, userID:String = null):void {
 			var id:String = (userID == null)? this.uid : userID;
 			this.connector.sendRequest("users", "restore", { id:id } , requestID);
 		}
 		
 		private function onResponse(e:ConnectorEvent):void {
 			this.dispatchEvent(e);
+		}
+		
+		/* INTERFACE ru.terbooter.server_api.IServerApi */
+		
+		public function sendRequest(controller:String, action:String, postParams:Object, requestID:String = null):void{
+			this.connector.sendRequest(controller, action, postParams, requestID);
 		}
 		
 		
