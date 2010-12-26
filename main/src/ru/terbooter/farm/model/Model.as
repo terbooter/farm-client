@@ -2,6 +2,8 @@ package ru.terbooter.farm.model {
 	import flash.events.Event;
 	import ru.terbooter.connector.Connector;
 	import ru.terbooter.farm.model.data.AppData;
+	import ru.terbooter.farm.model.data.FieldData;
+	import ru.terbooter.farm.model.data.ImageData;
 	import ru.terbooter.farm.model.data.MeData;
 	import ru.terbooter.server_api.IServerAPI;
 	import ru.terbooter.server_api.ServerAPI;
@@ -14,6 +16,8 @@ package ru.terbooter.farm.model {
 		
 		private var _appData:AppData;
 		private var _meData:MeData;
+		private var _fieldData:FieldData;
+		private var _imageData:ImageData;
 		private var serverApi:IServerAPI;
 		
 		public function Model(appData:AppData, serverApi:IServerAPI) {
@@ -26,6 +30,11 @@ package ru.terbooter.farm.model {
 			this._meData = new MeData(serverApi);
 			this.addChild(this._meData);
 			
+			this._fieldData = new FieldData(serverApi, this);
+			this.addChild(this._fieldData);
+			
+			this._imageData = new ImageData(this.appData);
+			
 			this.appData.addEventListener("test", onTest);
 		}
 		
@@ -36,6 +45,10 @@ package ru.terbooter.farm.model {
 		public function get appData():AppData { return _appData; }
 		
 		public function get meData():MeData { return _meData; }
+		
+		public function get fieldData():FieldData { return _fieldData; }
+		
+		public function get imageData():ImageData { return _imageData; }
 		
 		
 		

@@ -19,6 +19,7 @@ package ru.terbooter.farm.commands.init {
 		
 		override public function execute():void {
 			this.api.user_restore();
+			this.api.field_restore();
 		}
 		
 	}

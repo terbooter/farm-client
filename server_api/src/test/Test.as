@@ -31,8 +31,10 @@
 			
 			this.api.addEventListener(ConnectorEvent.RESPONSE, onApiResponse);
 			
-			this.api.user_restore();
-			this.api.user_restore("user121212");
+			//this.api.user_restore();
+			//this.api.user_restore("user121212");
+			
+			this.api.field_restore();
 		}
 		
 		private function onApiResponse(e:ConnectorEvent):void {

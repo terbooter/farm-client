@@ -2,9 +2,15 @@ package ru.terbooter.server_api {
 	import flash.events.EventDispatcher;
 	import ru.terbooter.connector.events.ConnectorEvent;
 	import ru.terbooter.connector.IConnector;
+	import ru.terbooter.server_api.events.ServerEvent;
 	/**
 	 * Более детально, чем Connector, описывает протокол общения с сервером
-	 * необходим для формализации и тестирования запросов на игровой сервер
+	 * необходим для формализации и тестирования запросов на игровой сервер.
+	 * 
+	 * Вторая функция - это привести ответ сервера в универсальный формат (Value Objects)
+	 * Это необходимо в том случае если формат ответа сервера изменится. (Например,
+	 * вместо XML будет JSON или AMF)
+	 * 
 	 * @author terbooter.ru
 	 */
 	public class ServerAPI extends EventDispatcher implements IServerAPI{
@@ -36,11 +42,21 @@ package ru.terbooter.server_api {
 		
 		public function field_restore(requestID:String = null, userID:String = null):void {
 			var id:String = (userID == null)? this.uid : userID;
-			this.connector.sendRequest("users", "restore", { id:id } , requestID);
+			this.connector.sendRequest("field", "restore", { id:id } , requestID);
 		}
 		
 		private function onResponse(e:ConnectorEvent):void {
-			this.dispatchEvent(e);
+			var serverEvent:ServerEvent = new ServerEvent(e.type, e.responseXML, e.responseID, e.bubbles, e.cancelable);
+			switch(serverEvent.command) {
+				case "user":
+					serverEvent.data = Parser.parseUserVO(e.responseXML);
+				break;
+				case "field":
+					serverEvent.data = Parser.parseField(e.responseXML);
+				break;
+			}
+			//Parser.parseUserVO(e.responseXML);
+			this.dispatchEvent(serverEvent);
 		}
 		
 		/* INTERFACE ru.terbooter.server_api.IServerApi */

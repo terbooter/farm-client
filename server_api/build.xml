@@ -28,6 +28,7 @@
 			
 			<external-library-path file="../${APP_ROOT}/logger/bin/Logger.swc" append="true"/>
 			<external-library-path file="../${APP_ROOT}/connector/bin/Connector.swc" append="true"/>
+			<external-library-path file="../${APP_ROOT}/vos/bin/Vos.swc" append="true"/>
             
         </compc>
     </target>

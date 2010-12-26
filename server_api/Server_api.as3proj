@@ -18,6 +18,7 @@
     <class path="src\interfaces" />
     <class path="..\connector" />
     <class path="..\logger" />
+    <class path="..\vos" />
   </classpaths>
   <!-- Build options -->
   <build>
@@ -52,6 +53,7 @@
   <libraryPaths>
     <element path="..\connector\bin\Connector.swc" />
     <element path="..\logger\bin\Logger.swc" />
+    <element path="..\vos\bin\Vos.swc" />
   </libraryPaths>
   <!-- External Libraries -->
   <externalLibraryPaths>

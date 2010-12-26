@@ -19,6 +19,11 @@ package ru.terbooter.farm.model.data {
 		public static const UPDATE_ME:String = "UPDATE_ME";
 		
 		/**
+		 * Обновилась поле
+		 */
+		public static const UPDATE_FIELD:String = "UPDATE_FIELD";
+		
+		/**
 		 * Универсальное поле. Тип данных зависит  от типа события
 		 * (Лучше использовать сигналы)
 		 */

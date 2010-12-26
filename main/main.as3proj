@@ -6,8 +6,8 @@
     <movie input="" />
     <movie path="bin\main.swf" />
     <movie fps="30" />
-    <movie width="800" />
-    <movie height="600" />
+    <movie width="1000" />
+    <movie height="800" />
     <movie version="10" />
     <movie background="#FFFFFF" />
   </output>
@@ -54,6 +54,7 @@
     <element path="..\logger\bin\Logger.swc" />
     <element path="..\connector\bin\Connector.swc" />
     <element path="..\server_api\bin\ServerApi.swc" />
+    <element path="lib\graph.swc" />
   </libraryPaths>
   <!-- External Libraries -->
   <externalLibraryPaths>

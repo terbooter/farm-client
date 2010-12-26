@@ -8,7 +8,9 @@ package ru.terbooter.server_api.events {
 	 */
 	public class ServerEvent extends ConnectorEvent {
 		
-		//public static const RESPONSE:String = "RESPONSE";
+		public static const RESPONSE:String = "RESPONSE";
+		
+		public var data:*;
 		
 		public function ServerEvent(type:String, xml:XML, id:String, bubbles:Boolean = false, cancelable:Boolean = false):void {
 			super(type, xml, id, bubbles, cancelable)
