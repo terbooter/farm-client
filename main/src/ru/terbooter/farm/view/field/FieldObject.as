@@ -18,14 +18,19 @@ package ru.terbooter.farm.view.field {
 		private var fieldX:int;
 		private var fieldY:int;
 		private var skin:DisplayObject;
+		private var focus:Sprite;
 		
 		private var imageData:ImageData;
+		
+		private var isOver:Boolean = false;
 		
 		/*x = (j-i) * w / 2; 
 		y = (i+j) * h / 2;  */
 		
 		public function FieldObject(imageData:ImageData) {
 			this.imageData = imageData;
+			this.mouseEnabled = false;
+			this.mouseChildren = false;
 		}
 		
 		public function setSetFildObjectVO(fieldObjectVO:FieldObjectVO):void {
@@ -35,7 +40,35 @@ package ru.terbooter.farm.view.field {
 			this.fieldY = (vo.y + vo.x) * this.placeHolder.height / 2;
 			this.addChild(this.placeHolder);
 			
-			this.imageData.getImage(this.vo, this.imageReady);
+			if (vo.type_id != "0") {
+				this.imageData.getImage(this.vo, this.imageReady);
+			}else {
+				//пустое поле
+				this.focus = new TilePlaceHolder_design();
+				
+			}
+		}
+		
+		public function over():void {
+			if (isOver) {
+				return;
+			}
+			if (vo.type_id == "0") {
+				this.addChild(this.focus);
+			}
+			
+			this.isOver = true;
+		}
+		
+		public function out():void {
+			if (this.focus) {
+				if (this.contains(this.focus)) {
+					this.removeChild(this.focus);
+				}
+			}
+			
+			this.isOver = false;
+			
 		}
 		
 		private function imageReady(o:Object):void {
