@@ -1,6 +1,7 @@
 ﻿package {
 	import flash.display.Sprite;
 	import flash.events.Event;
+	import flash.events.MouseEvent;
 	import ru.terbooter.connector.Connector;
 	import ru.terbooter.connector.events.ConnectorEvent;
 	import ru.terbooter.connector.IConnector;
@@ -34,7 +35,16 @@
 			//this.api.user_restore();
 			//this.api.user_restore("user121212");
 			
-			this.api.field_restore();
+			//this.api.field_restore();
+			/*this.api.field_grow();
+			this.api.field_grow();
+			this.api.field_grow();*/
+			
+			this.stage.addEventListener(MouseEvent.CLICK, onClick);
+		}
+		
+		private function onClick(e:MouseEvent):void {
+			this.api.field_grow();
 		}
 		
 		private function onApiResponse(e:ConnectorEvent):void {

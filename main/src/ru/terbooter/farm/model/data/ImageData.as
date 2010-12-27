@@ -1,6 +1,8 @@
 package ru.terbooter.farm.model.data {
 	import flash.display.Loader;
+	import flash.display.Sprite;
 	import flash.events.Event;
+	import flash.filters.GlowFilter;
 	import flash.net.URLRequest;
 	import ru.terbooter.farm.vos.FieldObjectVO;
 	/**
@@ -11,13 +13,15 @@ package ru.terbooter.farm.model.data {
 		
 		private var images:Object = { };
 		private var domain:String;
+		private var _glowFilter:GlowFilter = new GlowFilter(0xFFFF00);
+		private var _focus:Sprite = new TileFocus_design();
 		
 		public function ImageData(appData:AppData) {
 			this.domain = appData.serverURL;
 		}
 		
 		public function getImage(fieldObjectVO:FieldObjectVO, callback:Function):void {
-			var path:String = "plants/" + fieldObjectVO.type_id + "/" + fieldObjectVO.growPeriod + ".png";
+			var path:String = "plants/" + fieldObjectVO.type_id + "/" + fieldObjectVO.grow_period + ".png";
 			if (this.images[path]) {
 				callback.apply(null, [ImageLoader(this.images[path]).content]);
 				return;
@@ -39,6 +43,10 @@ package ru.terbooter.farm.model.data {
 			loader.callback = null;
 			
 		}
+		
+		public function get glowFilter():GlowFilter { return _glowFilter; }
+		
+		public function get focus():Sprite { return _focus; }
 		
 	}
 

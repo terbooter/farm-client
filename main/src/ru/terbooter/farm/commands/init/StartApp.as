@@ -4,7 +4,7 @@ package ru.terbooter.farm.commands.init {
 	import ru.terbooter.server_api.IServerAPI;
 	/**
 	 * Стартуем приложение.
-	 *	Шлем дефолтные запросы на сервер
+	 *	Отправляем дефолтные запросы на сервер
 	 * @author terbooter.ru
 	 */
 	

@@ -12,7 +12,7 @@ package ru.terbooter.farm.view.field {
 	 */
 	public class FieldObject extends Sprite {
 		
-		private var placeHolder:Sprite = new ISOPlaceHolder_design();
+		private var placeHolder:Sprite = new TilePlaceHolder_design();
 		private var vo:FieldObjectVO;
 		
 		private var fieldX:int;
@@ -29,8 +29,14 @@ package ru.terbooter.farm.view.field {
 		
 		public function FieldObject(imageData:ImageData) {
 			this.imageData = imageData;
+			
+			this.constructor();
+		}
+		
+		private function constructor():void{
 			this.mouseEnabled = false;
 			this.mouseChildren = false;
+			this.focus = this.imageData.focus;
 		}
 		
 		public function setSetFildObjectVO(fieldObjectVO:FieldObjectVO):void {
@@ -38,13 +44,13 @@ package ru.terbooter.farm.view.field {
 			
 			this.fieldX = (vo.y - vo.x) * this.placeHolder.width / 2;
 			this.fieldY = (vo.y + vo.x) * this.placeHolder.height / 2;
-			this.addChild(this.placeHolder);
+			//this.addChild(this.placeHolder);
 			
 			if (vo.type_id != "0") {
 				this.imageData.getImage(this.vo, this.imageReady);
 			}else {
 				//пустое поле
-				this.focus = new TilePlaceHolder_design();
+				this.addChild(this.focus);
 				
 			}
 		}
@@ -55,16 +61,24 @@ package ru.terbooter.farm.view.field {
 			}
 			if (vo.type_id == "0") {
 				this.addChild(this.focus);
+			}else {
+				this.filters = [this.imageData.glowFilter];
 			}
 			
 			this.isOver = true;
 		}
 		
 		public function out():void {
-			if (this.focus) {
+			if (!isOver) {
+				return;
+			}
+			
+			if (vo.type_id == "0") {
 				if (this.contains(this.focus)) {
 					this.removeChild(this.focus);
 				}
+			}else {
+				this.filters = [];
 			}
 			
 			this.isOver = false;
@@ -84,7 +98,7 @@ package ru.terbooter.farm.view.field {
 			var b:Sprite = new Sprite();
 			b.graphics.lineStyle(1);
 			b.graphics.drawRect(rect.x, rect.y, rect.width, rect.height);
-			this.addChild(b);
+			//this.addChild(b);
 		}
 		
 		/*override public function get x():Number {

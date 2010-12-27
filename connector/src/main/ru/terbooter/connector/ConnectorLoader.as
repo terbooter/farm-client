@@ -43,6 +43,7 @@ package ru.terbooter.connector {
 			for (var key:String in this.postData) {
 				vars[key] = this.postData[key];
 			}
+			vars.t = (new Date()).time;
 			request.data = vars;
 			this._loader = new URLLoader();
 			//Будем грузить хмл

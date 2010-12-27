@@ -18,6 +18,9 @@ package ru.terbooter.farm.model.data {
 		private var mainModel:Model;
 		private var _field:Array;
 		
+		public var maxX:int = 10;
+		public var maxY:int = 10;
+		
 		public function FieldData(serverApi:IServerAPI, mainModel:Model) {
 			
 			this.mainModel = mainModel;
@@ -33,21 +36,28 @@ package ru.terbooter.farm.model.data {
 		private function onResponse(e:ServerEvent):void {
 			trace("ru.terbooter.farm.model.data.FieldData::onResponse");
 			Log.instance.log(e.responseXML.attribute("c"));
+			Log.instance.log(e.responseXML.toXMLString());
+			var ar:Array;
 			if (e.command == "field") {
-				var ar:Array = e.data as Array;
+				ar = e.data as Array;
 				this.clearCoords();
 				this.fillCoords(ar);
 				//this.dispatchEvent(new DataEvent(DataEvent.UPDATE_ME));
 				
 			}
+			
+			if (e.command == "field_change") {
+				ar = e.data as Array;
+				this.fillCoords(ar);
+			}
 		}
 		
 		private function clearCoords():void{
-			
+			this._field = Utils.create2dArray(this.mainModel.fieldData.maxX, this.mainModel.fieldData.maxY);
 		}
 		
 		private function fillCoords(ar:Array):void {
-			this._field = Utils.create2dArray(10, 10);
+			
 			var o:FieldObjectVO;
 			for (var i:int = 0; i < ar.length; i++) {
 				o = FieldObjectVO(ar[i]);

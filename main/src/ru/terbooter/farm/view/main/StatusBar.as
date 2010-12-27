@@ -17,13 +17,14 @@ package ru.terbooter.farm.view.main {
 			super(mainModel);
 			
 			mainModel.addEventListener(DataEvent.UPDATE_ME, onUpdateMe);
-		}
-		
-		override protected function onAdded(e:Event):void {
 			
 			this.skin = new StatusBar_design();
 			this.addChild(this.skin);
 			this.update(this.mainModel.meData.me);
+		}
+		
+		override protected function onAdded(e:Event):void {
+			
 		}
 		
 		private function onUpdateMe(e:DataEvent):void {

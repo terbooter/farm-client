@@ -10,6 +10,8 @@ package ru.terbooter.server_api {
 	public interface IServerAPI extends IConnector{
 		function user_restore(requestID:String = null, userID:String = null):void;
 		function field_restore(requestID:String = null, userID:String = null):void;
+		function field_grow(requestID:String = null, userID:String = null):void;
+		
 	}
 	
 }

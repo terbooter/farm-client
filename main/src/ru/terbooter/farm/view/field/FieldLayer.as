@@ -48,11 +48,11 @@ package ru.terbooter.farm.view.field {
 				this.field.y = 0;
 			}
 			
-			if (this.field.x < 1000 - this.field.width) {
-				this.field.x = 1000 - this.field.width;
+			if (this.field.x < this.stage.stageWidth - this.field.width) {
+				this.field.x = this.stage.stageWidth - this.field.width;
 			}
-			if (this.field.y < 800 - this.field.height) {
-				this.field.y = 800 - this.field.height;
+			if (this.field.y < this.stage.stageHeight - this.field.height) {
+				this.field.y = this.stage.stageHeight - this.field.height;
 			}
 			
 			//if(this.field.x)

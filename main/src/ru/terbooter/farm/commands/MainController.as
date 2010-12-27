@@ -3,7 +3,9 @@ package ru.terbooter.farm.commands {
 	import ru.terbooter.connector.Connector;
 	import ru.terbooter.connector.IConnector;
 	import ru.terbooter.farm.commands.init.StartApp;
+	import ru.terbooter.farm.commands.user.GrowAll;
 	import ru.terbooter.farm.model.data.AppData;
+	import ru.terbooter.farm.model.data.CommandsPool;
 	import ru.terbooter.farm.model.Model;
 	import ru.terbooter.farm.view.Layout;
 	import ru.terbooter.server_api.IServerAPI;
@@ -14,7 +16,7 @@ package ru.terbooter.farm.commands {
 	 */
 	public class MainController {
 		
-		private var root:Sprite
+		private var root:Sprite;
 		
 		public function MainController(root:Sprite) {
 			this.root = root;
@@ -30,8 +32,13 @@ package ru.terbooter.farm.commands {
 			var layout:Layout = new Layout(mainModel);
 			root.addChild(layout);
 			
+			mainModel.commandsPool = new CommandsPool();
+			mainModel.commandsPool.growAll = new GrowAll(mainModel, serverApi);
+			
 			var start:CommandBase = new StartApp(mainModel, serverApi);
 			start.execute();
+			
+			
 		}
 		
 	}

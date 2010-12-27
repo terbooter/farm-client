@@ -27,9 +27,7 @@ package ru.terbooter.farm.vos {
 		/**
 		 * Стадия роста ростения
 		 */
-		public function get growPeriod():int {
-			return 1;
-		}
+		public var grow_period:int;
 		
 		
 		public function FieldObjectVO() {

@@ -2,6 +2,7 @@ package ru.terbooter.farm.model {
 	import flash.events.Event;
 	import ru.terbooter.connector.Connector;
 	import ru.terbooter.farm.model.data.AppData;
+	import ru.terbooter.farm.model.data.CommandsPool;
 	import ru.terbooter.farm.model.data.FieldData;
 	import ru.terbooter.farm.model.data.ImageData;
 	import ru.terbooter.farm.model.data.MeData;
@@ -15,6 +16,7 @@ package ru.terbooter.farm.model {
 	public class Model extends ModelBase{
 		
 		private var _appData:AppData;
+		private var _commandsPool:CommandsPool;
 		private var _meData:MeData;
 		private var _fieldData:FieldData;
 		private var _imageData:ImageData;
@@ -49,6 +51,12 @@ package ru.terbooter.farm.model {
 		public function get fieldData():FieldData { return _fieldData; }
 		
 		public function get imageData():ImageData { return _imageData; }
+		
+		public function get commandsPool():CommandsPool { return _commandsPool; }
+		
+		public function set commandsPool(value:CommandsPool):void {
+			_commandsPool = value;
+		}
 		
 		
 		

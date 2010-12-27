@@ -29,6 +29,7 @@ package ru.terbooter.farm.view.field {
 		private var map:Sprite = new Sprite();
 		
 		public function Field(mainModel:Model) {
+			this.mainModel = mainModel;
 			this.bg = new FieldBG_design();
 			this.addChild(this.bg);
 			
@@ -36,19 +37,22 @@ package ru.terbooter.farm.view.field {
 			this.map.x = this.x0;
 			this.map.y = this.y0;
 			
-			this.field = Utils.create2dArray(10, 10);
+			this.field = Utils.create2dArray(this.mainModel.fieldData.maxX, this.mainModel.fieldData.maxY);
 			
 			this.mainModel = mainModel;
 			this.mainModel.addEventListener(DataEvent.UPDATE_FIELD, onUpdateField);
 			
-			this.map.addEventListener(MouseEvent.MOUSE_MOVE, onMouseOver);
+			//this.map.addEventListener(MouseEvent.MOUSE_MOVE, onMouseOver);
+			this.addEventListener(MouseEvent.MOUSE_MOVE, onMouseOver);
 		}
 		
 		private function onMouseOver(e:Event):void {
 			var p:Point = this.screen2isometric(this.mouseX, this.mouseY);
 			
 			if (p.x >= 0 && p.y >= 0) {
-				var o:FieldObject = FieldObject(field[p.x][p.y]);
+				if (p.x < this.mainModel.fieldData.maxX && p.y < this.mainModel.fieldData.maxY) {
+					var o:FieldObject = FieldObject(field[p.x][p.y]);
+				}
 			}
 			
 			if (o) {

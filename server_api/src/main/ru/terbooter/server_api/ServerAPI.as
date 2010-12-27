@@ -45,6 +45,11 @@ package ru.terbooter.server_api {
 			this.connector.sendRequest("field", "restore", { id:id } , requestID);
 		}
 		
+		public function field_grow(requestID:String = null, userID:String = null):void{
+			var id:String = (userID == null)? this.uid : userID;
+			this.connector.sendRequest("field", "grow", { id:id } , requestID);
+		}
+		
 		private function onResponse(e:ConnectorEvent):void {
 			var serverEvent:ServerEvent = new ServerEvent(e.type, e.responseXML, e.responseID, e.bubbles, e.cancelable);
 			switch(serverEvent.command) {
@@ -52,6 +57,9 @@ package ru.terbooter.server_api {
 					serverEvent.data = Parser.parseUserVO(e.responseXML);
 				break;
 				case "field":
+					serverEvent.data = Parser.parseField(e.responseXML);
+				break;
+				case "field_change":
 					serverEvent.data = Parser.parseField(e.responseXML);
 				break;
 			}
@@ -64,6 +72,8 @@ package ru.terbooter.server_api {
 		public function sendRequest(controller:String, action:String, postParams:Object, requestID:String = null):void{
 			this.connector.sendRequest(controller, action, postParams, requestID);
 		}
+		
+		/* INTERFACE ru.terbooter.server_api.IServerAPI */
 		
 		
 	}

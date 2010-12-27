@@ -9,6 +9,7 @@ package ru.terbooter.farm.view.main {
 	public class MainLayer extends ViewBase {
 		
 		private var statusBar:StatusBar;
+		private var menu:Menu;
 		
 		public function MainLayer(mainModel:Model) {
 			super(mainModel);
@@ -16,8 +17,14 @@ package ru.terbooter.farm.view.main {
 		
 		override protected function onAdded(e:Event):void {
 			
-			this.statusBar = new StatusBar(this.mainModel);
+			this.statusBar = new StatusBar(super.mainModel);
 			this.addChild(this.statusBar);
+			
+			this.menu = new Menu(super.mainModel);
+			this.addChild(this.menu);
+			this.menu.y = this.root.stage.stageHeight - this.menu.height;
+			trace(menu.y);
+			this.menu.y = 615;
 		}
 	}
 

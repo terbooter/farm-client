@@ -76,6 +76,7 @@ package ru.terbooter.server_api {
 			f.process_end = parseInt(xml.process_end.toString());
 			f.x = parseInt(xml.x.toString());
 			f.y = parseInt(xml.y.toString());
+			f.grow_period = parseInt(xml.grow_period.toString());
 			return f;
 		}
 		
