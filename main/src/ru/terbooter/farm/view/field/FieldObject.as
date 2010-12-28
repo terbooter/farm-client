@@ -40,6 +40,9 @@ package ru.terbooter.farm.view.field {
 		}
 		
 		public function setSetFildObjectVO(fieldObjectVO:FieldObjectVO):void {
+			if (this.vo == fieldObjectVO) {
+				return;
+			}
 			this.vo = fieldObjectVO;
 			
 			this.fieldX = (vo.y - vo.x) * this.placeHolder.width / 2;
@@ -50,8 +53,14 @@ package ru.terbooter.farm.view.field {
 				this.imageData.getImage(this.vo, this.imageReady);
 			}else {
 				//пустое поле
-				this.addChild(this.focus);
+				//this.addChild(this.focus);
+				if (this.skin) {
+					if (this.contains(this.skin)) {
+						this.removeChild(this.skin);
+					}
+				}
 				
+				this.filters = [];
 			}
 		}
 		

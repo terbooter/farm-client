@@ -11,7 +11,7 @@ package ru.terbooter.farm.commands {
 		
 		
 		public function CommandBase(mainModel:Model) {
-			
+			this.mainModel = mainModel;
 		}
 		
 		public function execute():void {

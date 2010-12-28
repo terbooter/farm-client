@@ -3,7 +3,10 @@ package ru.terbooter.farm.commands {
 	import ru.terbooter.connector.Connector;
 	import ru.terbooter.connector.IConnector;
 	import ru.terbooter.farm.commands.init.StartApp;
+	import ru.terbooter.farm.commands.user.CropPlant;
+	import ru.terbooter.farm.commands.user.FieldClick;
 	import ru.terbooter.farm.commands.user.GrowAll;
+	import ru.terbooter.farm.commands.user.SeedPlant;
 	import ru.terbooter.farm.model.data.AppData;
 	import ru.terbooter.farm.model.data.CommandsPool;
 	import ru.terbooter.farm.model.Model;
@@ -34,6 +37,9 @@ package ru.terbooter.farm.commands {
 			
 			mainModel.commandsPool = new CommandsPool();
 			mainModel.commandsPool.growAll = new GrowAll(mainModel, serverApi);
+			mainModel.commandsPool.seedPlant = new SeedPlant(mainModel, serverApi);
+			mainModel.commandsPool.cropPlant = new CropPlant(mainModel, serverApi);
+			mainModel.commandsPool.fieldClick = new FieldClick(mainModel);
 			
 			var start:CommandBase = new StartApp(mainModel, serverApi);
 			start.execute();

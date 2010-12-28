@@ -44,7 +44,10 @@
 		}
 		
 		private function onClick(e:MouseEvent):void {
-			this.api.field_grow();
+			//this.api.field_grow();
+			//this.api.field_seed(1, 2, 3);
+			this.api.field_crop("2");
+			
 		}
 		
 		private function onApiResponse(e:ConnectorEvent):void {

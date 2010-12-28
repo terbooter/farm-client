@@ -24,6 +24,11 @@ package ru.terbooter.farm.model.data {
 		public static const UPDATE_FIELD:String = "UPDATE_FIELD";
 		
 		/**
+		 * Обновился выбранный инструмент
+		 */
+		public static const UPDATE_HAND_STATE:String = "UPDATE_HAND_STATE";
+		
+		/**
 		 * Универсальное поле. Тип данных зависит  от типа события
 		 * (Лучше использовать сигналы)
 		 */

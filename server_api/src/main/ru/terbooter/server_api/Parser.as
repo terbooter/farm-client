@@ -1,4 +1,5 @@
 package ru.terbooter.server_api {
+	import ru.terbooter.farm.vos.ErrorVO;
 	import ru.terbooter.farm.vos.FieldObjectVO;
 	import ru.terbooter.farm.vos.UserVO;
 	/**
@@ -78,6 +79,13 @@ package ru.terbooter.server_api {
 			f.y = parseInt(xml.y.toString());
 			f.grow_period = parseInt(xml.grow_period.toString());
 			return f;
+		}
+		
+		public static function parseError(xml:XML):ErrorVO {
+			var e:ErrorVO = new ErrorVO();
+			e.code = xml.code.toString();
+			
+			return e;
 		}
 		
 	}

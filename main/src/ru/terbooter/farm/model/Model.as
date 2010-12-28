@@ -4,6 +4,7 @@ package ru.terbooter.farm.model {
 	import ru.terbooter.farm.model.data.AppData;
 	import ru.terbooter.farm.model.data.CommandsPool;
 	import ru.terbooter.farm.model.data.FieldData;
+	import ru.terbooter.farm.model.data.HandData;
 	import ru.terbooter.farm.model.data.ImageData;
 	import ru.terbooter.farm.model.data.MeData;
 	import ru.terbooter.server_api.IServerAPI;
@@ -20,6 +21,7 @@ package ru.terbooter.farm.model {
 		private var _meData:MeData;
 		private var _fieldData:FieldData;
 		private var _imageData:ImageData;
+		private var _handData:HandData;
 		private var serverApi:IServerAPI;
 		
 		public function Model(appData:AppData, serverApi:IServerAPI) {
@@ -34,6 +36,9 @@ package ru.terbooter.farm.model {
 			
 			this._fieldData = new FieldData(serverApi, this);
 			this.addChild(this._fieldData);
+			
+			this._handData = new HandData();
+			this.addChild(this._handData);
 			
 			this._imageData = new ImageData(this.appData);
 			
@@ -57,6 +62,8 @@ package ru.terbooter.farm.model {
 		public function set commandsPool(value:CommandsPool):void {
 			_commandsPool = value;
 		}
+		
+		public function get handData():HandData { return _handData; }
 		
 		
 		

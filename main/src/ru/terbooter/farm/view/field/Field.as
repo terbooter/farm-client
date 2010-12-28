@@ -44,6 +44,13 @@ package ru.terbooter.farm.view.field {
 			
 			//this.map.addEventListener(MouseEvent.MOUSE_MOVE, onMouseOver);
 			this.addEventListener(MouseEvent.MOUSE_MOVE, onMouseOver);
+			this.addEventListener(MouseEvent.CLICK, onClick);
+		}
+		
+		private function onClick(e:MouseEvent):void {
+			var p:Point = this.screen2isometric(this.mouseX, this.mouseY);
+			this.mainModel.commandsPool.fieldClick.setPoint(p);
+			this.mainModel.commandsPool.fieldClick.execute();
 		}
 		
 		private function onMouseOver(e:Event):void {

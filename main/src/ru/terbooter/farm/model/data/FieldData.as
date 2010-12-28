@@ -68,6 +68,14 @@ package ru.terbooter.farm.model.data {
 		
 		public function get field():Array { return _field; }
 		
+		public function getFieldObjectVO(x:int, y:int):FieldObjectVO {
+			if (x >= 0 && x < maxX && y >= 0 && y < maxY) {
+				return FieldObjectVO(this.field[x][y]);
+			}
+			
+			return null;
+		}
+		
 	}
 
 }

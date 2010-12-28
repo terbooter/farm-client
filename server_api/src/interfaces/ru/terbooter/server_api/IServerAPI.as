@@ -11,6 +11,8 @@ package ru.terbooter.server_api {
 		function user_restore(requestID:String = null, userID:String = null):void;
 		function field_restore(requestID:String = null, userID:String = null):void;
 		function field_grow(requestID:String = null, userID:String = null):void;
+		function field_seed(x:int, y:int, type_id:int, requestID:String = null, userID:String = null):void;
+		function field_crop(obj_id:String, requestID:String = null, userID:String = null):void;
 		
 	}
 	

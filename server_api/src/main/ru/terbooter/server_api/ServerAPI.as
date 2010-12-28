@@ -50,6 +50,16 @@ package ru.terbooter.server_api {
 			this.connector.sendRequest("field", "grow", { id:id } , requestID);
 		}
 		
+		public function field_seed(x:int, y:int, type_id:int, requestID:String = null, userID:String = null):void {
+			var id:String = (userID == null)? this.uid : userID;
+			this.connector.sendRequest("field", "seed", { id:id, x:x, y:y, type_id:type_id } , requestID);
+		}
+		
+		public function field_crop(obj_id:String, requestID:String = null, userID:String = null):void {
+			var id:String = (userID == null)? this.uid : userID;
+			this.connector.sendRequest("field", "crop", { obj_id:obj_id} , requestID);
+		}
+		
 		private function onResponse(e:ConnectorEvent):void {
 			var serverEvent:ServerEvent = new ServerEvent(e.type, e.responseXML, e.responseID, e.bubbles, e.cancelable);
 			switch(serverEvent.command) {
@@ -61,6 +71,10 @@ package ru.terbooter.server_api {
 				break;
 				case "field_change":
 					serverEvent.data = Parser.parseField(e.responseXML);
+				break;
+				case "error":
+					serverEvent.data = Parser.parseError(e.responseXML);
+					trace(serverEvent.data, serverEvent.data.code);
 				break;
 			}
 			//Parser.parseUserVO(e.responseXML);
