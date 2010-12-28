@@ -39,7 +39,6 @@ package ru.terbooter.farm.view.field {
 			//TODO оптимизировать
 			this.field.x = this.mouseX-this.clickPoint.x;
 			this.field.y = this.mouseY-this.clickPoint.y;
-			 //= this.mouseX;
 			 
 			if (this.field.x > 0) {
 				this.field.x = 0;
@@ -55,7 +54,6 @@ package ru.terbooter.farm.view.field {
 				this.field.y = this.stage.stageHeight - this.field.height;
 			}
 			
-			//if(this.field.x)
 		}
 		
 		override protected function onAdded(e:Event):void {

@@ -40,17 +40,17 @@ package ru.terbooter.farm.view.field {
 		}
 		
 		public function setSetFildObjectVO(fieldObjectVO:FieldObjectVO):void {
-			if (this.vo == fieldObjectVO) {
-				return;
+			if (this.vo) {
+				if ((this.vo.type_id == fieldObjectVO.type_id) && (this.vo.grow_period == fieldObjectVO.grow_period) ) {
+					return;
+				}
 			}
+			
 			this.vo = fieldObjectVO;
 			
-			this.fieldX = (vo.y - vo.x) * this.placeHolder.width / 2;
-			this.fieldY = (vo.y + vo.x) * this.placeHolder.height / 2;
-			//this.addChild(this.placeHolder);
 			
 			if (vo.type_id != "0") {
-				this.imageData.getImage(this.vo, this.imageReady);
+				this.imageData.getImage(fieldObjectVO, this.imageReady);
 			}else {
 				//пустое поле
 				//this.addChild(this.focus);
@@ -62,6 +62,8 @@ package ru.terbooter.farm.view.field {
 				
 				this.filters = [];
 			}
+			
+			this.vo = fieldObjectVO;
 		}
 		
 		public function over():void {
@@ -99,6 +101,12 @@ package ru.terbooter.farm.view.field {
 			trace("ru.terbooter.farm.view.field.FieldObject::imageReady", o);
 			var bitmap:Bitmap = Bitmap(o);
 			var bitmapdata:BitmapData = bitmap.bitmapData;
+			
+			if (this.skin) {
+				if (this.contains(this.skin)) {
+					this.removeChild(this.skin);
+				}
+			}
 			
 			this.skin = new Bitmap(bitmapdata);
 			this.addChild(this.skin);

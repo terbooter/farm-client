@@ -8,7 +8,8 @@ package ru.terbooter.farm.model {
 		/**
 		 * URL игрового сервера
 		 */
-		public static const SERVER_URL:String = "http://127.0.0.1:3000/";
+		//public static const SERVER_URL:String = "http://127.0.0.1:3000/";
+		public static const SERVER_URL:String = "http://85.10.199.98:3000/";
 		
 		/**
 		 * ИД соцсети (0-ВК)
